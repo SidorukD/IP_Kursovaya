@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Атлас мира — справочник стран</title>
+  <link rel="icon" href="assets/atlas.svg" type="image/svg+xml">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/atlas.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg atlas-navbar" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand atlas-brand" href="index.html">
+        <span class="brand-name">Атлас мира</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Страны</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="atlas-hero">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <p class="hero-kicker">справочник стран</p>
+            <h1>Атлас мира</h1>
+            <p class="hero-lead">Краткие сведения о 13 странах: столица, население, площадь, география и несколько фактов для сравнения.</p>
+          </div>
+          <div class="col-lg-5">
+            <div class="card summary-card">
+              <div class="card-body">
+                <div class="summary-head">
+                  <div>
+                    <p class="summary-label">в справочнике</p>
+                    <p class="summary-number">13 стран</p>
+                  </div>
+                  <span class="badge text-bg-light">5 континентов</span>
+                </div>
+                <div class="summary-row"><span>Европа</span><span class="summary-bar"><i style="width:46%"></i></span><b>6</b></div>
+                <div class="summary-row"><span>Азия</span><span class="summary-bar"><i style="width:31%"></i></span><b>4</b></div>
+                <div class="summary-row"><span>Африка</span><span class="summary-bar"><i style="width:8%"></i></span><b>1</b></div>
+                <div class="summary-row"><span>Северная Америка</span><span class="summary-bar"><i style="width:8%"></i></span><b>1</b></div>
+                <div class="summary-row"><span>Южная Америка</span><span class="summary-bar"><i style="width:8%"></i></span><b>1</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container catalog-layout" id="catalog">
+      <div class="row g-4">
+        <aside class="col-lg-3">
+          <div class="card filters-card">
+            <div class="card-body">
+              <h2 class="filters-title">Поиск и фильтры</h2>
+              <div class="mb-3">
+                <label class="form-label" for="searchInput">Страна или столица</label>
+                <input class="form-control" type="search" id="searchInput" placeholder="Например, Япония">
+              </div>
+
+              <fieldset class="mb-3">
+                <legend class="form-label">Континент</legend>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="continent" id="continentAll" value="all" checked>
+                  <label class="form-check-label" for="continentAll">Все</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="continent" id="continentEurope" value="Европа">
+                  <label class="form-check-label" for="continentEurope">Европа</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="continent" id="continentAsia" value="Азия">
+                  <label class="form-check-label" for="continentAsia">Азия</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="continent" id="continentAfrica" value="Африка">
+                  <label class="form-check-label" for="continentAfrica">Африка</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="continent" id="continentNorth" value="Северная Америка">
+                  <label class="form-check-label" for="continentNorth">Северная Америка</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="continent" id="continentSouth" value="Южная Америка">
+                  <label class="form-check-label" for="continentSouth">Южная Америка</label>
+                </div>
+              </fieldset>
+
+              <div class="mb-3">
+                <label class="form-label" for="sortSelect">Сортировка</label>
+                <select class="form-select" id="sortSelect">
+                  <option value="name">По названию</option>
+                  <option value="population">По населению</option>
+                  <option value="area">По площади</option>
+                </select>
+              </div>
+
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="favoritesOnly">
+                <label class="form-check-label" for="favoritesOnly">Только избранные</label>
+              </div>
+
+              <button class="btn btn-sm btn-outline-secondary" type="button" id="resetFilters">Сбросить фильтры</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="col-lg-9" aria-live="polite">
+          <div class="catalog-head">
+            <h2>Страны</h2>
+            <p id="resultCount">13 стран</p>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3" id="countryGrid"></div>
+          <p class="empty-message" id="emptyMessage" hidden>Ничего не найдено. Измените запрос или выберите другой континент.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>Атлас мира</span>
+    </div>
+  </footer>
+
+  <div class="toast align-items-center border-0" id="toast" role="status" aria-live="polite" hidden>
+    <div class="d-flex"><div class="toast-body"></div></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/countries.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>
