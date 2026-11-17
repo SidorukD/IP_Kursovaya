@@ -91,6 +91,33 @@ a:hover {
   border-radius: 10px;
 }
 
+.hero-photo {
+  margin: 0 0 14px;
+  overflow: hidden;
+  border: 1px solid #3d5368;
+  border-radius: 16px;
+  background: #0e1c29;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.hero-photo figcaption {
+  padding: 8px 12px;
+  background: #16273a;
+  color: #aebbc4;
+  font-size: 11px;
+}
+
+.hero-photo a {
+  color: #d9e2e6;
+}
+
 .summary-card {
   background: #fffdf8;
   border: 1px solid #ded4c3;
@@ -266,6 +293,30 @@ legend.form-label {
   letter-spacing: 1px;
 }
 
+.country-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.country-card-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.country-flag {
+  display: block;
+  width: 42px;
+  height: 28px;
+  object-fit: cover;
+  border: 1px solid #d8cec0;
+  border-radius: 4px;
+  background: #fff;
+}
+
 .country-card .card-title {
   margin-bottom: 4px;
   font-size: 22px;
@@ -337,6 +388,22 @@ legend.form-label {
   padding: 26px;
   background: #1c2f45;
   color: #fffdf8;
+}
+
+.country-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.country-flag-lg {
+  width: 78px;
+  height: 52px;
+  object-fit: cover;
+  margin-top: 4px;
+  border: 1px solid #62778a;
+  border-radius: 6px;
+  background: #fff;
 }
 
 .country-head h1 {
@@ -412,6 +479,13 @@ legend.form-label {
   font-family: Candara, "Trebuchet MS", sans-serif;
   font-size: 15px;
   font-weight: 400;
+}
+
+.related-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3px;
 }
 
 .related-card span {
