@@ -46,14 +46,21 @@ function continentClass(continent) {
   return CONTINENT_CLASSES[continent] || "other";
 }
 
+function flagSrc(code) {
+  return "assets/flags/" + code.toLowerCase() + ".png";
+}
+
 function countryCard(country) {
   const cls = continentClass(country.continent);
   return `
     <div class="col">
       <article class="card country-card h-100">
         <div class="card-body">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <span class="badge continent-badge badge-${cls}">${country.continent}</span>
+          <div class="country-card-top">
+            <div class="country-card-tags">
+              <img class="country-flag" src="${flagSrc(country.code)}" alt="Флаг ${country.name}" width="42" height="28" loading="lazy">
+              <span class="badge continent-badge badge-${cls}">${country.continent}</span>
+            </div>
             <span class="country-code">${country.code}</span>
           </div>
           <h3 class="card-title"><a class="stretched-link" href="country.html?code=${country.code}">${country.name}</a></h3>
@@ -145,7 +152,10 @@ function relatedLinks(country) {
       <div class="col">
         <a class="card related-card h-100" href="country.html?code=${item.code}">
           <div class="card-body py-2">
-            <strong>${item.name}</strong>
+            <div class="related-head">
+              <img class="country-flag" src="${flagSrc(item.code)}" alt="Флаг ${item.name}" width="42" height="28" loading="lazy">
+              <strong>${item.name}</strong>
+            </div>
             <span>${item.continent}</span>
           </div>
         </a>
@@ -164,16 +174,21 @@ function renderCountryPage() {
   const isFavorite = favorites.includes(country.code);
   const cls = continentClass(country.continent);
   document.getElementById("breadcrumbName").textContent = country.name;
-  document.title = country.name + " — Атлас мира";
+  document.title = country.name + " – Атлас мира";
 
   view.innerHTML = `
     <article class="country-page">
       <header class="country-head">
         <div class="row align-items-center g-3">
           <div class="col-lg">
-            <span class="badge continent-badge badge-${cls}">${country.continent}</span>
-            <h1>${country.name}</h1>
-            <p>${country.official}</p>
+            <div class="country-heading">
+              <img class="country-flag-lg" src="${flagSrc(country.code)}" alt="Флаг ${country.name}" width="78" height="52">
+              <div>
+                <span class="badge continent-badge badge-${cls}">${country.continent}</span>
+                <h1>${country.name}</h1>
+                <p>${country.official}</p>
+              </div>
+            </div>
           </div>
           <div class="col-lg-auto country-actions">
             <button class="btn btn-light" id="bookmarkButton" type="button">${isFavorite ? "Убрать из избранного" : "В избранное"}</button>
