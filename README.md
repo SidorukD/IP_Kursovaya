@@ -1,6 +1,7 @@
 # Атлас мира
 
 https://sidorukd.github.io/IP_Kursovaya/
+
 Онлайн-каталог стран с краткими справками, поиском и фильтрами. Сделан на HTML, CSS, JavaScript и Bootstrap 5.
 
 ## Возможности
